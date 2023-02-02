@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Calendario from './Componentes/Calendario';
+import Header from './Componentes/Header';
+import Formulario from './Componentes/Formulario';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  const [clientes, setClientes] = useState([])
+
+    const addNovaCliente = (cliente) => {
+      setClientes([...clientes, cliente])
+      console.log(cliente)
+      console.log(clientes)
+
+    }
+
+  return(
+    <>
+      <Header/>
+      <Formulario addNovaCliente={cliente => addNovaCliente(cliente)}/>
+      <Calendario/>
+    </>
   );
 }
 
