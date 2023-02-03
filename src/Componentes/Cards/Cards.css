@@ -1,0 +1,19 @@
+.card{
+    background-color: aliceblue;
+    display: flex;
+
+}
+
+.imagem{
+    border-radius: 50%;
+    justify-content: center;
+}
+
+.dados{
+    color: rgba(69,80,61,255);
+    display: inline-block;
+}
+
+.dados:hover{
+    color:rgba(195,204,191);
+}

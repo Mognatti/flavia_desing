@@ -1,25 +1,38 @@
-import './Servicos.css'
+import "./Servicos.css";
 
-export default function Servicos({label, valor, seter}){
-    
-    const servicos = [
-        'Design Simples',
-        'Design com Rena',
-        'Micropigmentação (Shadow)',
-        'Micropigmentação (Fio a Fio)',
-        'Micropigmentação (Retoque)',
-    ]
+export default function Servicos({ label, valor, setter }) {
+  const servicos = [
+    "Design Simples",
+    "Design com Rena",
+    "Micropigmentação (Shadow)",
+    "Micropigmentação (Fio a Fio)",
+    "Micropigmentação (Retoque)",
+  ];
 
-    const aoEnviar = (e) =>{
-        seter(e.target.value)
-    }
+  const aoEnviar = (novoValor, servicoSelecionado) => {
+    setter(novoValor, servicoSelecionado);
+  };
 
-    return(
-        <div className='radio'>
-            <label> {label} </label> <br/>
-        {servicos.map(servico => {return(<label className='servico' key={servico}> 
-            <input  name='Serviços' type='checkbox' value={valor} onChange={aoEnviar}/> {servico} </label>)})}
-        </div>
-    )
-
+  return (
+    <div>
+      <label> {label} </label> <br />
+      {servicos.map((servico) => {
+        return (
+          <div key={servico} className="servicos">
+            <label htmlFor={servico}>
+              <input
+                style={{ marginRight: 10 }}
+                id={servico}
+                name="Serviços"
+                type="checkbox"
+                checked={valor.includes(servico)}
+                onChange={(e) => aoEnviar(e.target.checked, servico)}
+              />
+              {servico}
+            </label>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
