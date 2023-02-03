@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import CampoForm from '../CampoForm'
+import Servicos from '../Servicos'
 import './Formulario.css'
 
 export default function Formulario({addNovaCliente}) {
 
-    const [nome, setNome] =useState('')
-    const [idade, setIdade] =useState('')
-    const [ultimaVisita, setUltimaVisita] =useState('')
-    const [ultimoServico, setUltimoServico] =useState('')
+    const [nome, setNome] =useState('');
+    const [idade, setIdade] =useState('');
+    const [telefone, setTelefone] = useState('');
+    const [ultimaVisita, setUltimaVisita] =useState('');
+    const [ultimoServico, setUltimoServico] =useState(['']);  
 
 
     const onSubmit = (e)=>{
@@ -15,10 +17,11 @@ export default function Formulario({addNovaCliente}) {
         addNovaCliente({
             nome,
             idade,
+            telefone,
             ultimaVisita,
             ultimoServico
         })
-        console.log(nome, idade, ultimaVisita, ultimoServico)
+        console.log(nome, idade, telefone, ultimaVisita, ultimoServico)
         
     }
 
@@ -32,8 +35,9 @@ export default function Formulario({addNovaCliente}) {
                 <div>
                     <CampoForm label='Nome' valor={nome} seter={valor => setNome(valor)}></CampoForm>
                     <CampoForm label='Idade' valor={idade} seter={valor => setIdade(valor)}></CampoForm>
-                    <CampoForm label='Data da última visita' valor={ultimaVisita} seter={valor => setUltimaVisita(valor)}></CampoForm>
-                    <CampoForm label='Último serviço realizado' valor={ultimoServico} seter={valor => setUltimoServico(valor)}></CampoForm>
+                    <CampoForm label='Telefone' valor={telefone} seter={valor => setTelefone(valor)}></CampoForm>
+                    <CampoForm label='Data da última visita' tipo='date' valor={ultimaVisita} seter={valor => setUltimaVisita(valor)}></CampoForm>
+                    <Servicos label='Tipo(s) de serviço(s) prestado(s):'  valor={ultimoServico} seter={valor => setUltimoServico(valor)}/>
                 </div>
                 <div className='botao'>
                     <button>Salvar Cliente</button>

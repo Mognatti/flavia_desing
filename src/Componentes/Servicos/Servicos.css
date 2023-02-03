@@ -1,0 +1,10 @@
+.radio{
+    color: black;
+    display: inline-block;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.servico{
+    margin-top: -8px;
+}
